@@ -19,13 +19,13 @@ namespace Data_Access.Repositories
 
         public async Task<IEnumerable<User>> GetAllAsync()
         {
-            var sql = "SELECT * FROM User";
+            var sql = "SELECT * FROM Users";
             return await _databaseAccess.ExecuteQueryAsync<User>(sql);
         }
 
         public async Task<User> GetByIdAsync(int id)
         {
-            var sql = "SELECT * FROM User WHERE Id = @Id";
+            var sql = "SELECT * FROM Users WHERE Id = @Id";
             var parameters = new { Id = id };
             var users = await _databaseAccess.ExecuteQueryAsync<User>(sql, parameters);
             return users.FirstOrDefault();
@@ -33,27 +33,35 @@ namespace Data_Access.Repositories
 
         public async Task<User> GetByNameAsync(string name)
         {
-            var sql = "SELECT * FROM User WHERE Name = @Name";
+            var sql = "SELECT * FROM Users WHERE Name = @Name";
             var parameters = new { Name = name };
+            var users = await _databaseAccess.ExecuteQueryAsync<User>(sql, parameters);
+            return users.FirstOrDefault();
+        }
+
+        public async Task<User> GetByLoginAsync(string login)
+        {
+            var sql = "SELECT * FROM Users WHERE Login = @Login";
+            var parameters = new { Login = login };
             var users = await _databaseAccess.ExecuteQueryAsync<User>(sql, parameters);
             return users.FirstOrDefault();
         }
 
         public async Task AddAsync(User user)
         {
-            var sql = "INSERT INTO User (Name, Email, PhoneNumber, Login, Password) VALUES (@Name, @Email, @PhoneNumber, @Login, @Password)";
+            var sql = "INSERT INTO Users (Name, Email, PhoneNumber, Login, Password) VALUES (@Name, @Email, @PhoneNumber, @Login, @Password)";
             await _databaseAccess.ExecuteNonQueryAsync(sql, user);
         }
 
         public async Task UpdateAsync(User user)
         {
-            var sql = "UPDATE User SET Name = @Name, Email = @Email, PhoneNumber = @PhoneNumber, Login = @Login, Password = @Password WHERE Id = @Id";
+            var sql = "UPDATE Users SET Name = @Name, Email = @Email, PhoneNumber = @PhoneNumber, Login = @Login, Password = @Password WHERE Id = @Id";
             await _databaseAccess.ExecuteNonQueryAsync(sql, user);
         }
 
         public async Task DeleteAsync(int id)
         {
-            var sql = "DELETE FROM User WHERE Id = @Id";
+            var sql = "DELETE FROM Users WHERE Id = @Id";
             var parameters = new { Id = id };
             await _databaseAccess.ExecuteNonQueryAsync(sql, parameters);
         }

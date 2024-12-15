@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Data_Access.Repositories
 {
-    internal interface IUserRepository : IRepository<User>
+    public interface IUserRepository : IRepository<User>
     {
         Task<User> GetByNameAsync(string name);
+        Task<User> GetByLoginAsync(string login);
     }
 }

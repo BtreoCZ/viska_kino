@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Data_Access.Repositories
 {
-    internal interface IScreeningRoomRepository : IRepository<ScreeningRoom>
+    public interface IScreeningRoomRepository : IRepository<ScreeningRoom>
     {
         Task<IEnumerable<ScreeningRoom>> GetAvailableRoomsAsync();
     }

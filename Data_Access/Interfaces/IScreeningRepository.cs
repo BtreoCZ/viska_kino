@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Data_Access.Repositories
 {
-    internal interface IScreeningRepository : IRepository<Screening>
+    public interface IScreeningRepository : IRepository<Screening>
     {
         Task<Screening> GetScreeningByTimeAsync(DateTime start, DateTime end);
+        Task<IEnumerable<Screening>> GetScreeningsForDayAsync(DateTime day);
     }
 }

@@ -1,0 +1,37 @@
+﻿@model viska_kino_mvc.Models.CreateReservationViewModel;
+
+<div class="container mt-4">
+    <h2 class="text-center">Rezervace</h2>
+    <form asp-action="Create" method="post">
+        <!-- Skryté vstupy pro všechny hodnoty -->
+        <input type="hidden" asp-for="ScreeningId" />
+        <input type="hidden" asp-for="FilmId" />
+        <input type="hidden" asp-for="ScreeningRoomId" />
+
+        <!-- Viditelné pole pro název filmu -->
+        <div class="mb-3">
+            <label>Film</label>
+            <input type="text" class="form-control" asp-for="FilmTitle" value="@Model.FilmTitle" readonly />
+        </div>
+
+        <div class="mb-3">
+            <label>Čas promítání</label>
+            <input type="text" class="form-control" asp-for="ScreeningTime" value="@Model.ScreeningTime" readonly />
+        </div>
+
+        <!-- Viditelné pole pro název sálu -->
+        <div class="mb-3">
+            <label>Sál</label>
+            <input type="text" class="form-control" asp-for="ScreeningRoomName" value="@Model.ScreeningRoomName" readonly />
+        </div>
+
+        <!-- Viditelné pole pro počet míst -->
+        <div class="mb-3">
+            <label for="NumberOfSeats">Počet míst</label>
+            <input type="number" asp-for="NumberOfSeats" class="form-control" />
+            <span asp-validation-for="NumberOfSeats" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Potvrdit rezervaci</button>
+    </form>
+</div>

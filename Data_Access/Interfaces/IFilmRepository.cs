@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Data_Access.Repositories
 {
-    internal interface IFilmRepository : IRepository<Film>
+    public interface IFilmRepository : IRepository<Film>
     {
         Task<Film> GetByTitleAsync(string title);
     }

@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Data_Access.Repositories
 {
-    internal interface IReservationRepository : IRepository<Reservation>
+    public interface IReservationRepository : IRepository<Reservation>
     {
         Task<IEnumerable<Reservation>> GetReservationsByScreeningIdAsync(int Id);
+
+        Task<IEnumerable<Reservation>> GetReservationsByUserIdAsync(int Id);
     }
 }
