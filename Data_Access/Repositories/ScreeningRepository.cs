@@ -66,7 +66,7 @@ namespace Data_Access.Repositories
 
         public async Task UpdateAsync(Screening screening)
         {
-            var sql = "UPDATE Screenings SET ScreeningTime = @ScreeningTime, FilmId = @FilmId, ScreeningRoomId = @ScreeningRoomId WHERE Id = @Id";
+            var sql = "UPDATE Screenings SET ScreeningTime = @ScreeningTime, FilmId = @FilmId, ScreeningRoomId = @ScreeningRoomId,Capacity = @Capacity WHERE Id = @Id";
             await _databaseAccess.ExecuteNonQueryAsync(sql, screening);
         }
 

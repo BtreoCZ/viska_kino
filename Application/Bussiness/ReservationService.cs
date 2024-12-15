@@ -41,7 +41,7 @@ namespace Application.Bussiness
             var screening = await _screeningRepository.GetByIdAsync(model.ScreeningId);
             if (screening == null)
             {
-                return false; // Promítání neexistuje
+                return false; 
             }
 
             // Ověření, zda existuje uživatel
