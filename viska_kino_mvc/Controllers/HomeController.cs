@@ -55,7 +55,6 @@ namespace viska_kino_mvc.Controllers
 
             if (!ModelState.IsValid)
             {
-                Console.WriteLine("Jsi píèa");
                 return View(model); 
             }
 
